@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "ts-node --files ./src/server/app.ts",
+    "dev:desktop": "PLATFORM=desktop ts-node --files server/app.ts",
+    "dev:mobile": "PLATFORM=mobile ts-node --files server/app.ts",
     "build": "next build",
     "start": "next start"
   },
