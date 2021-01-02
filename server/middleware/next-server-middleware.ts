@@ -1,19 +1,18 @@
 import createNextServer from 'next';
 import { RequestHandler } from 'express';
 import { isDevEnv } from '../utils/isDevEnv';
-import { APP_DESKTOP, APP_MOBILE } from '../../configs/app.path';
 import { isPlatformDesktop } from '../utils/isPlatformDesktop';
 import { isPlatformMobile } from '../utils/isPlatformMobile';
 
 global.nextDesktopServer = createNextServer({
   dev: isDevEnv,
-  dir: APP_DESKTOP,
+  dir: process.env.BUILD_DESKTOP_APP_PATH,
   customServer: true,
 });
 
 global.nextMobileServer = createNextServer({
   dev: isDevEnv,
-  dir: APP_MOBILE,
+  dir: process.env.BUILD_MOBILE_APP_PATH,
   customServer: true,
 });
 

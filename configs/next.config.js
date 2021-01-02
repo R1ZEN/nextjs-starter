@@ -1,7 +1,7 @@
-module.exports = {
-  webpack: (config, { buildId, dev }) => {
-    config.resolve.symlinks = false;
+const withPlugins = require('next-compose-plugins');
+const withProjectionSymlinks = require('./plugins/projection-symlinks');
+const withBundleAnalyzer = require('./plugins/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
-    return config;
-  },
-};
+module.exports = withPlugins([withProjectionSymlinks, withBundleAnalyzer]);
