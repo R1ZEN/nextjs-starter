@@ -1,5 +1,5 @@
 import * as e from 'express';
-import { parse } from 'url';
+import url from 'url';
 import { isPlatformDesktop } from '../utils/isPlatformDesktop';
 import { isPlatformMobile } from '../utils/isPlatformMobile';
 
@@ -9,23 +9,19 @@ import { isPlatformMobile } from '../utils/isPlatformMobile';
  * @param res
  */
 export const renderPageMiddleware: e.RequestHandler = async (req, res) => {
-  const parsedUrl = parse(req.url, true);
-  let { pathname } = parsedUrl;
+  const parsedUrl = url.parse(req.url, true);
 
-  let html = '';
   if (isPlatformDesktop) {
-    html = await global.nextDesktopServer.renderToHTML(req, res, pathname);
+    await global.nextDesktopServer.getRequestHandler()(req, res, parsedUrl);
   } else if (isPlatformMobile) {
-    html = await global.nextMobileServer.renderToHTML(req, res, pathname);
+    await global.nextMobileServer.getRequestHandler()(req, res, parsedUrl);
   } else {
     if (req.isDesktop) {
-      html = await global.nextDesktopServer.renderToHTML(req, res, pathname);
+      await global.nextDesktopServer.getRequestHandler()(req, res, parsedUrl);
     }
 
     if (req.isMobile) {
-      html = await global.nextMobileServer.renderToHTML(req, res, pathname);
+      await global.nextMobileServer.getRequestHandler()(req, res, parsedUrl);
     }
   }
-
-  res.send(html);
 };
