@@ -1,8 +1,8 @@
 import createNextServer from 'next';
 import { RequestHandler } from 'express';
-import { isDevEnv } from '../utils/isDevEnv';
-import { isPlatformDesktop } from '../utils/isPlatformDesktop';
-import { isPlatformMobile } from '../utils/isPlatformMobile';
+import { isDevEnv } from '../utils/is-dev-env';
+import { isPlatformDesktop } from '../utils/is-platform-desktop';
+import { isPlatformMobile } from '../utils/is-platform-mobile';
 
 global.nextDesktopServer = createNextServer({
   dev: isDevEnv,

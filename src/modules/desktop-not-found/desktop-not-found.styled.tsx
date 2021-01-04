@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mixinFont144 } from '../common/mixins/font.mixins';
+import { mixinFont144 } from '../core/components/common/mixins/font.mixins';
 
 export const NotFoundArticle = styled.article`
   width: 292px;

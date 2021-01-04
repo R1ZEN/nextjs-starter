@@ -10,6 +10,7 @@ echo "> Build Desktop/Mobile App"
 rm -rf $PWD/projection/desktop/.next
 rm -rf $PWD/projection/mobile/.next
 
+
 npx next build $PWD/projection/desktop
 npx next build $PWD/projection/mobile
 

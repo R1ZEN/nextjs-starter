@@ -3,6 +3,9 @@ module.exports = (api) => {
 
   return {
     presets: ['next/babel'],
-    plugins: [['styled-components', { ssr: true }]],
+    plugins: [
+      ['styled-components', { ssr: true }],
+      ['transform-inline-environment-variables', { include: ['NODE_ENV', 'PLATFORM'] }]
+    ],
   };
 };

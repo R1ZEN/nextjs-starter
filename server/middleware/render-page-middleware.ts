@@ -1,7 +1,7 @@
 import * as e from 'express';
 import url from 'url';
-import { isPlatformDesktop } from '../utils/isPlatformDesktop';
-import { isPlatformMobile } from '../utils/isPlatformMobile';
+import { isPlatformDesktop } from '../utils/is-platform-desktop';
+import { isPlatformMobile } from '../utils/is-platform-mobile';
 
 /**
  * Render Page
